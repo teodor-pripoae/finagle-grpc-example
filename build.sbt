@@ -59,3 +59,14 @@ libraryDependencies ++= Seq(
   "io.netty"   % "netty-tcnative-boringssl-static" % "1.1.33.Fork19", // SSL support
   "javassist"  % "javassist"                       % "3.12.1.GA" // Improves Netty performance
 )
+
+assemblyMergeStrategy in assembly := {
+  case s if s.endsWith(".properties")      => MergeStrategy.filterDistinctLines
+  case s if s.endsWith("application.conf") => MergeStrategy.concat
+  case s if s.endsWith("pom.xml")          => MergeStrategy.last
+  case s if s.endsWith("BUILD")            => MergeStrategy.discard
+  case PathList("google", "protobuf", _ *) => MergeStrategy.last
+  case x =>
+    val oldStrategy = (assemblyMergeStrategy in assembly).value
+    oldStrategy(x)
+}
