@@ -56,6 +56,7 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "io.buoyant" %% "grpc-runtime"                   % versions.linkderd,
   "io.buoyant" %% "finagle-h2"                     % versions.linkderd,
+  "com.twitter" %% "finagle-zipkin"                % versions.finagle,
   "io.netty"   % "netty-tcnative-boringssl-static" % "1.1.33.Fork19", // SSL support
   "javassist"  % "javassist"                       % "3.12.1.GA" // Improves Netty performance
 )

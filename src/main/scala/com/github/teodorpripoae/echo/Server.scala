@@ -24,8 +24,10 @@ object Server {
   def start(config: Config) = {
     val host = config.getString("server-host")
     val port = config.getInt("server-port")
-    val server = new ServerDispatcher(Seq(new EchoServer.Server(new EchoServerImpl)))
-    val h2srv = H2.serve(s"${host}:${port}", server)
-    Await.ready(h2srv)
+    val handler = new ServerDispatcher(Seq(new EchoServer.Server(new EchoServerImpl)))
+
+    val srv = H2.server.withLabel("echo-grpc-server").withTracer(Tracing.tracer).serve(s"${host}:${port}", handler)
+
+    Await.ready(srv)
   }
 }
