@@ -1,5 +1,21 @@
 # finagle grpc example
 
+## Dependencies
+
+grpc-finagle is Work in Progress right now and you need to install development version (pre 0.9.0 and after 0.8.6).
+
+```bash
+$ # in linkerd project
+$ git checkout 0.9.0-rc1
+$ # rename version in project/Base.scala to 0.9.0
+
+$ # in linkerd project
+$ sbt
+> grpc-gen/assembly // and copy the protoc plugin to your path
+> finagle-h2/publishLocal
+> grpc-runtime/publishLocal
+```
+
 ## Run
 
 ```
