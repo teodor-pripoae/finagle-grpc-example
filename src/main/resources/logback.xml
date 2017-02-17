@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <target>System.out</target>
+    <encoder>
+      <pattern>[%-4level] [%d{YYYY-MM-DD HH:mm:ss.SSS}] [%thread] %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+  <!--<logger name="akka" level="info" >-->
+  <!--<appender-ref ref="consoleAppender"></appender-ref>-->
+  <!--</logger>-->
+
+  <!--<logger name="io.getquill.FinaglePostgresContext" level="warn">-->
+  <!--<appender-ref ref="consoleAppender"></appender-ref>-->
+  <!--</logger>-->
+</configuration>
